@@ -8,5 +8,6 @@ export class QuizProvider {
   constructor(public http: HttpClient) {
     console.log('Hello QuizProvider Provider');
   }
+  
 
 }
