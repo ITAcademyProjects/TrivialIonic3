@@ -1,5 +1,7 @@
 {
   "name": "trivialProject",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
