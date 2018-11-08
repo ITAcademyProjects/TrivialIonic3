@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { QuizProvider } from '../../providers/quiz/quiz';
+import { Question } from '../../models/question';
 
 @Component({
   selector: 'page-about',
@@ -7,8 +9,20 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  questions:Question[];
+  questionIndex:number=0;
 
+  constructor(public navCtrl: NavController, public quiz:QuizProvider) {
+    this.getAllQuestions();
   }
 
+  getCurrentQuestion(){
+    return this.questions[this.questionIndex];
+  }
+  
+  getAllQuestions(){
+    this.quiz.getAllQuestions()
+    .then(res => this.questions=res)
+    .catch(err => console.log(err));
+  }
 }

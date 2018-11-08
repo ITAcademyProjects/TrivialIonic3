@@ -7,5 +7,11 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="questions">
+      <h1>{{getCurrentQuestion().question}}</h1>
 
+      <p>{{getCurrentQuestion().correct_answer}}</p>
+      <p *ngFor="let question of getCurrentQuestion().incorrect_answers">{{question}}</p>
+    
+  </div>
 </ion-content>
