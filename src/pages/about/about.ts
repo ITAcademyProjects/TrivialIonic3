@@ -11,6 +11,7 @@ export class AboutPage {
 
   questions:Question[];
   questionIndex:number=0;
+  isCorrect=false;
   answers:string[]=new Array();
 
   constructor(public navCtrl: NavController, public quiz:QuizProvider) {
@@ -24,16 +25,19 @@ export class AboutPage {
   getAnswers(){
     if(this.answers.length==0){
       this.answers.push(this.getCurrentQuestion().correct_answer);
-      for(let answer in this.getCurrentQuestion().incorrect_answers){
+      
+      for(let answer of this.getCurrentQuestion().incorrect_answers){        
         this.answers.push(answer);
       }    
   
-      this.shuffle(this.answers);
-    }
-    
+      this.answers=this.shuffle(this.answers);
+    }    
     return this.answers;
   }
 
+  selectAnswer(answer: string){
+    this.isCorrect=this.getCurrentQuestion().correct_answer==answer;
+  }
    shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {

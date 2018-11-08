@@ -9,7 +9,8 @@
 <ion-content padding>
   <div *ngIf="questions">
       <h1>{{getCurrentQuestion().question}}</h1>
-      <p *ngFor="let answer of getAnswers()">{{answer}}</p>
-    
+      <h2 *ngIf="isCorrect">CORRECT!</h2>
+      <p *ngFor="let answer of getAnswers()" (click)="selectAnswer(answer)">{{answer}}</p>
+
   </div>
 </ion-content>
